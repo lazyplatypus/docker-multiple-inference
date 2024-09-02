@@ -1,0 +1,17 @@
+version: '3.6'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - 11434:11434
+    restart: unless-stopped
+    tty: true
+    environment:
+      - OLLAMA_API_BASE_URL=http://ollama:11434/api
+
+volumes:
+  ollama: {}
